@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import mongoose from 'mongoose';
 import routes from './routes';
 
@@ -7,6 +8,7 @@ class App {
         this.server = express();
         this.database();
         this.middlewares();
+        this.cors();
         this.routes();
     }
 
@@ -19,6 +21,10 @@ class App {
 
     middlewares() {
         this.server.use(express.json());
+    }
+
+    cors() {
+        this.server.use(cors());
     }
 
     routes() {
